@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Category } from '../models/category';
-import { ListResponseModel } from '../models/listResponseModel';
+import { ListResponseModel } from '../models/ListResponseModel';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 
