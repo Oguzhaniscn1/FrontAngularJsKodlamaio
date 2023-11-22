@@ -5,6 +5,7 @@ import { response } from 'express';
 import { ProductService } from '../../services/product.service';
 import { ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { CartService } from '../../services/cart.service';
 
 @Component({
   selector: 'app-product',
@@ -19,7 +20,8 @@ export class ProductComponent implements OnInit {
   constructor(
     private productService: ProductService,
     private activatedRoute: ActivatedRoute,
-    private toastrService: ToastrService
+    private toastrService: ToastrService,
+    private cartService: CartService
   ) {}
 
   ngOnInit(): void {
@@ -38,7 +40,6 @@ export class ProductComponent implements OnInit {
     });
   }
 
-    
   getProductsByCategory(categoryId: number) {
     this.productService
       .getProductsByCategory(categoryId)
@@ -48,6 +49,11 @@ export class ProductComponent implements OnInit {
   }
 
   addToCart(prodcut: Product) {
-    this.toastrService.success('sepete eklendi', prodcut.productName);
+    if (prodcut.productId === 1) {
+      this.toastrService.error(prodcut.productName, 'ürün sepete eklenemez');
+    } else {
+      this.toastrService.success('sepete eklendi', prodcut.productName);
+      this.cartService.addToCart(prodcut);
+    }
   }
 }
