@@ -1,0 +1,15 @@
+<div class="content">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-header"><h5 class="title">ürün ekle</h5></div>
+      <div class="card-body">
+        <!-- ts de oluşturduğumuz productAddForm buraya ait diye [formGroup]="productAddForm" -->
+        <form [formGroup]="productAddForm">
+            <div class="form-group">
+                <input type="text" id="prodcutName" formControlName="productName" class="form-control" placeholder="ürün adı"/>
+            </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
